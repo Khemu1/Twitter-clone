@@ -1,0 +1,55 @@
+.mid-side {
+  display: grid;
+  grid: 10% auto / auto;
+  width: 100%;
+  border: 0.5px solid rgba(255, 255, 255, 0.451);
+}
+.mid-side > * {
+  padding: 5px 10px;
+}
+
+header {
+  display: grid;
+  grid: auto/ auto auto;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: capitalize;
+  font-weight: bold;
+  font-size: 20px;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.451);
+}
+.tweet-area {
+  display: grid;
+  grid: max-content / 10% 90%;
+  border-bottom: 8px solid rgba(255, 255, 255, 0.451);
+  height: max-content;
+  padding: 10px;
+}
+.tweet-submit-area {
+  display: grid;
+  grid-row: auto auto / auto;
+  gap: 10px;
+}
+.tweet-field {
+  padding-right: 10px;
+}
+.tweet-field textarea {
+  resize: none;
+  width: 100%;
+  min-height: 50px;
+  border: none;
+  background: transparent;
+  color: white;
+}
+.tweet-field textarea:focus-visible {
+  outline: 1px double rgba(255, 255, 255, 0.451);
+}
+.tweet-buttons {
+  display: grid;
+  grid: 100% / repeat(2, max-content);
+  justify-content: space-between;
+  padding-right: 10px;
+}
+.tweet-icons {
+  display: flex;
+}

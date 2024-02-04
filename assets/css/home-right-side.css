@@ -1,0 +1,23 @@
+.right-side {
+  width: 100%;
+  display: grid;
+}
+
+.right-side .container {
+  display: grid;
+  padding: 30px;
+  grid: auto auto / auto;
+}
+.accounts-area {
+  background-color: #ffffff21;
+  border-radius: 10px;
+  color: white;
+  padding: 10px;
+}
+.account {
+  display: grid;
+  grid: auto/10% 90%;
+}
+.account-icon img {
+  width: 35px;
+}

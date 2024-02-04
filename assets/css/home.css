@@ -1,0 +1,10 @@
+body {
+  background-color: #000;
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+}
+.page {
+  display: grid;
+  grid: auto / 25% 45% auto;
+  justify-items: start;
+}

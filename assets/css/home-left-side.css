@@ -1,0 +1,61 @@
+
+.left-side {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  gap: 20px;
+  width: max-content;
+  font-size: 20px;
+  text-transform: capitalize;
+  padding: 15px;
+}
+.bird {
+  display: grid;
+  justify-items: start;
+  width: 100%;
+  margin-bottom: 25px;
+}
+.buttons {
+  display: grid;
+  grid: auto/auto;
+  gap: 15px;
+}
+.bird img {
+  width: 40px;
+}
+
+.buttons a {
+  display: grid;
+  gap: 10px;
+  grid: 1fr / auto auto;
+  align-items: center;
+  cursor: pointer;
+  padding: 5px 10px;
+  width: 180px;
+  border-radius: 10px;
+  color: white;
+  text-decoration: none;
+}
+.img img {
+  width: 30px;
+  height: 30px;
+}
+.buttons a:hover {
+  transition: background-color 250ms ease-in-out;
+  cursor: pointer;
+  background-color: grey;
+}
+.tweet {
+  color: white;
+  text-transform: capitalize;
+  width: 200px;
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+  background-color: rgb(29, 155, 240);
+}
+.tweet:hover {
+  transition: background 500ms ease-in-out;
+  background: linear-gradient(180deg, rgb(10, 122, 197), rgb(29, 155, 240));
+  cursor: pointer;
+}

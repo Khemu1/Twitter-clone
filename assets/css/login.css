@@ -1,0 +1,37 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: white;
+}
+form {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  gap: 20px;
+  padding: 80px;
+  border-radius: 15px;
+}
+.inputs {
+  display: grid;
+  gap: 10px;
+}
+input {
+  width: 250px;
+  height: 40px;
+  border-radius: 10px;
+}
+button {
+  background-color: rgb(29, 155, 240);
+  color: white;
+  width: 250px;
+  height: 40px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 18px;
+}
+button:hover {
+  background: linear-gradient(180deg, rgb(8, 114, 185), rgb(29, 155, 240));
+  cursor: pointer;
+}
