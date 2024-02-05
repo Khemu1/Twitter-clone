@@ -27,8 +27,9 @@ header {
 }
 .tweet-submit-area {
   display: grid;
-  grid-row: auto auto / auto;
+  grid: auto auto / auto;
   gap: 10px;
+  padding-right: 25px;
 }
 .tweet-field {
   padding-right: 10px;
@@ -40,9 +41,13 @@ header {
   border: none;
   background: transparent;
   color: white;
+  transition: all 250ms ease-in-out;
+}
+.tweet-field textarea:hover {
+  background-color: #ffffff21;
 }
 .tweet-field textarea:focus-visible {
-  outline: 1px double rgba(255, 255, 255, 0.451);
+  outline: none;
 }
 .tweet-buttons {
   display: grid;
@@ -51,5 +56,59 @@ header {
   padding-right: 10px;
 }
 .tweet-icons {
-  display: flex;
+  display: grid;
+  grid: auto/repeat(4, max-content);
+  align-items: center;
+  gap: 9px;
+  min-height: 30px;
+}
+.tweet-icon {
+  display: grid;
+  align-items: center;
+}
+.upload {
+  background: transparent;
+  position: relative;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  width: fit-content;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  padding: 1px;
+}
+.upload:hover {
+  border: 2px solid cyan;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.upload input {
+  cursor: pointer;
+}
+.upload input[type="file"] {
+  cursor: pointer;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  width: 24px;
+  background-color: red;
+  height: 24px;
+  transform: scale(3);
+  opacity: 0%;
+}
+.post-tweet {
+  color: white;
+  text-transform: capitalize;
+  width: 80px;
+  padding: 12px;
+  border-radius: 20px;
+  border: none;
+  background-color: rgb(29, 155, 240);
+}
+.post-tweet:hover {
+  transition: background 500ms ease-in-out;
+  background: linear-gradient(180deg, rgb(10, 122, 197), rgb(29, 155, 240));
+  cursor: pointer;
 }

@@ -33,11 +33,10 @@ require_once("/laragon/www/twitter/config/setup.php");
 
             <div class="tweet-icons">
               <div class="tweet-icon">
-                <input type="file" name="img">
-              </div>
-
-              <div class="tweet-icon">
-                <img src="../assets\icons\gallery.png" alt="">
+                <button class="upload">
+                  <img src="../assets\icons\gallery.png" alt="">
+                  <input type="file">
+                </button>
               </div>
 
               <div class="tweet-icon">
@@ -53,7 +52,7 @@ require_once("/laragon/www/twitter/config/setup.php");
               </div>
 
             </div>
-            <button name="submit ">tweet</button>
+            <button name="submit" class="post-tweet">tweet</button>
           </div>
 
         </div>

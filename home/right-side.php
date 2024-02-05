@@ -15,7 +15,7 @@ require_once("/laragon/www/twitter/config/setup.php");
   <div class="right-side">
     <div class="container">
       <form action="POST">
-        <input type="text" name="accounts" placeholder="search for users">
+        <input type="text" name="search-accounts" class="search" placeholder="search for users">
       </form>
       <div class="accounts-area">
         <div class="account">
@@ -24,7 +24,7 @@ require_once("/laragon/www/twitter/config/setup.php");
           </div>
           <div class="account-info">
             <div class="account-name">Name</div>
-            <div class="account-posts">Num</div>
+            <div class="account-posts">Posts: Num</div>
           </div>
         </div>
       </div>

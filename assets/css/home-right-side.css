@@ -6,7 +6,37 @@
 .right-side .container {
   display: grid;
   padding: 30px;
-  grid: auto auto / auto;
+  grid: repeat(2, max-content) / auto;
+  gap: 165px;
+}
+form:has(.search) {
+  display: grid;
+  justify-items: center;
+  width: 100%;
+}
+.search {
+  border: none;
+  background-color: #ffffff21;
+  border-radius: 20px;
+  padding-block: 10px;
+  width: calc(100% - 15px);
+  height: 30px;
+  color: white;
+  transition: all 500ms ease-in-out;
+  padding-left: 15px;
+}
+.search:hover {
+  background-color: rgba(122, 115, 115, 0.482);
+  cursor: pointer;
+}
+.search:focus-visible {
+  background-color: rgba(122, 115, 115, 0.482);
+  outline: none;
+}
+.search::placeholder {
+  text-transform: capitalize;
+  font-weight: 700;
+  padding-left: 0px;
 }
 .accounts-area {
   background-color: #ffffff21;
@@ -16,8 +46,23 @@
 }
 .account {
   display: grid;
-  grid: auto/10% 90%;
+  grid: auto/5% 90%;
+  gap: 20px;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.451);
+  padding: 5px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 500ms ease-in-out;
+}
+.account:hover {
+  background-color: rgb(28, 134, 75);
+  color: #000;
 }
 .account-icon img {
   width: 35px;
+}
+.account-info {
+  display: grid;
+  gap: 5px;
 }
