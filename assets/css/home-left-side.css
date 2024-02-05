@@ -2,12 +2,12 @@
   display: grid;
   justify-items: center;
   align-items: center;
-  gap: 20px;
+  gap: 25px;
   width: max-content;
   font-size: 20px;
   text-transform: capitalize;
   padding: 15px;
-  grid: repeat(3, max-content) / auto;
+  grid: repeat(4, max-content) / auto;
 }
 .bird {
   display: grid;

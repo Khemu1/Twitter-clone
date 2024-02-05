@@ -1,6 +1,11 @@
 <?php
-require_once("/laragon/www/twitter/config/setup.php");
+// require_once("/laragon/www/twitter/config/setup.php");
 
+if (isset($_POST["logout"])) {
+  session_destroy();
+  header("location:../form/login.php");
+  exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -97,6 +102,9 @@ require_once("/laragon/www/twitter/config/setup.php");
     </div>
 
     <button class="tweet">tweet</button>
+    <form method="POST">
+      <button class="tweet" name="logout">Logout</button>
+    </form>
 
   </div>
 

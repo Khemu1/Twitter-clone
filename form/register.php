@@ -15,18 +15,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["name"], $_POST["passwo
   $accounts = Account::select(["name"], ["name" => $name]);
 
   if (!empty($accounts) && $accounts[0]["name"] === $name) {
-    echo "Invalid name";
+    echo "this name is already taken";
   } else {
     if (!empty($name) && !empty($password)) {
       Account::insert(["name" => $name, "pass" => $password]);
       echo "Account created";
 
-      $account=Account::select(["name","id"], ["name"=> $name,"password"=> $password]);
-      
-      $dbName = $account[0]["name"];
+      $account = Account::select(["name", "id"], ["name" => $name, "pass" => $password]);
+
       $dbId = $account[0]["id"];
       $_SESSION["id"] = $dbId;
-      header("location: home.php");
+      $_SESSION["name"] = $_POST["name"];
+
+      header("location: ../home/home.php");
 
     }
   }
@@ -41,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["name"], $_POST["passwo
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="assets/css/login.css">
+  <link rel="stylesheet" href="../assets/css/login.css">
   <title>Register</title>
 </head>
 

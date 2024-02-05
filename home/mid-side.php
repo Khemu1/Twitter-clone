@@ -1,5 +1,6 @@
 <?php
 require_once("/laragon/www/twitter/config/setup.php");
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +16,9 @@ require_once("/laragon/www/twitter/config/setup.php");
 <body>
   <div class="mid-side">
     <header>
-      <span>home</span>
+      <span>
+        <?= $_SESSION["name"] ?>
+      </span>
       <div class="img">
         <img src="../assets/icons/star.png">
       </div>

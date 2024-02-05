@@ -2,6 +2,7 @@ body {
   background-color: #000;
   color: white;
   font-family: "Times New Roman", Times, serif !important;
+  font-weight: 500 !important;
 }
 .page {
   display: grid;
