@@ -1,0 +1,221 @@
+body {
+  background-color: #000;
+  color: white;
+  font-family: "Times New Roman", Times, serif !important;
+  font-weight: 500 !important;
+}
+.post-page {
+  display: grid;
+  grid: auto / 25% 45% auto;
+  justify-items: start;
+  height: 100lvh;
+}
+.posts {
+  display: grid;
+  gap: 20px;
+}
+.post {
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.451);
+  height: fit-content;
+}
+.go {
+  display: grid;
+  grid: max-content/ auto;
+  gap: 10px;
+  align-items: start;
+  padding: 10px;
+  width: 100%;
+  background: none;
+  cursor: pointer;
+  outline: none;
+  color: white;
+  border: none;
+}
+
+.writer-post {
+  display: grid;
+  grid: repeat(2, max-content) / auto;
+  gap: 10px;
+  padding-inline: 5px;
+}
+.text {
+  width: 100%;
+  font-size: 12px;
+  word-break: break-all;
+  text-align: start;
+  max-height: 546.281px;
+  margin-top: 15px;
+}
+.writer-post img {
+  width: 99%;
+  height: 100%;
+  border-radius: 10px;
+}
+.user-img {
+  display: flex;
+  align-items: center;
+  grid: max-content/repeat(2, max-content);
+  gap: 10px;
+}
+.post-writer {
+  opacity: 50%;
+  transition: all 250ms ease-in-out;
+}
+.post-writer:hover {
+  opacity: 100%;
+}
+.post-buttons {
+  display: grid;
+  grid: max-content/repeat(4, max-content);
+  gap: 14px;
+  align-items: center;
+  justify-content: space-around;
+  padding-bottom: 10px;
+}
+.like {
+  background: none;
+  outline: none;
+  width: max-content;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 25px;
+  padding: 5px;
+  background-color: rgb(89, 49, 49);
+  align-items: center;
+  gap: 5px;
+}
+.post-button {
+  background: none;
+  outline: none;
+  width: max-content;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 25px;
+  padding: 5px;
+  display: flex;
+  justify-items: center;
+}
+
+.post-button:hover {
+  background-color: rgb(29, 31, 31);
+}
+.post-button:has(span) {
+  gap: 5px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(2, max-content);
+}
+.post-button img {
+  width: 18px;
+}
+.tweet-area {
+  display: grid;
+  grid: max-content / 10% 90%;
+  /* border-bottom: 8px solid rgba(255, 255, 255, 0.451); */
+  height: max-content;
+  padding: 10px;
+}
+.tweet-submit-area {
+  display: grid;
+  grid: auto auto / auto;
+  gap: 10px;
+  padding-right: 25px;
+}
+.tweet-field {
+  padding-right: 10px;
+}
+.tweet-field textarea {
+  resize: none;
+  width: 100%;
+  min-height: 50px;
+  border: none;
+  background: transparent;
+  color: white;
+  transition: all 250ms ease-in-out;
+}
+.tweet-field textarea:hover {
+  background-color: #ffffff21;
+}
+.tweet-field textarea:focus-visible {
+  outline: none;
+}
+.tweet-buttons {
+  display: grid;
+  grid: 100% / repeat(2, max-content);
+  justify-content: space-between;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+.tweet-icons {
+  display: grid;
+  grid: auto/repeat(4, max-content);
+  align-items: center;
+  gap: 9px;
+  min-height: 30px;
+}
+.tweet-icon {
+  display: grid;
+  align-items: center;
+}
+.upload {
+  background: transparent;
+  position: relative;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  width: fit-content;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  padding: 1px;
+}
+.upload:hover {
+  border: 2px solid cyan;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.upload input {
+  cursor: pointer;
+}
+.upload input[type="file"] {
+  cursor: pointer;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  width: 24px;
+  background-color: red;
+  height: 24px;
+  transform: scale(3);
+  opacity: 0%;
+}
+.post-tweet {
+  color: white;
+  text-transform: capitalize;
+  width: 80px;
+  padding: 12px;
+  border-radius: 20px;
+  border: none;
+  background-color: rgb(29, 155, 240);
+}
+.post-tweet:hover {
+  transition: background 500ms ease-in-out;
+  background: linear-gradient(180deg, rgb(10, 122, 197), rgb(29, 155, 240));
+  cursor: pointer;
+}
+form {
+  margin: 0;
+}
+.hidden {
+  display: none;
+}

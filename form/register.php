@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["name"], $_POST["passwo
       $account = Account::select(["name", "id"], ["name" => $name, "pass" => $password]);
 
       $dbId = $account[0]["id"];
-      $_SESSION["id"] = $dbId;
+      $_SESSION["login_id"] = $dbId;
       $_SESSION["name"] = $_POST["name"];
 
       header("location: ../home/home.php");

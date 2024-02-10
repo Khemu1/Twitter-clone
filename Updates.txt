@@ -1,0 +1,4 @@
+2/10/2024
+Now number of comments and likes are displayed correctly
+comment page is working fine but not yet done 
+added a follow button as request

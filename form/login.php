@@ -10,14 +10,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $password = $_POST["password"];
 
   $accounts = Account::select(["name", "pass", "id"], ["name" => $name, "pass" => $password]);
-  $Dbname = $accounts[0]["name"];
-  $Dbpassword = $accounts[0]["pass"];
-  $id = $accounts[0]["id"];
-  echo $id;
+  if (count($accounts) > 0) {
+    $Dbname = $accounts[0]["name"];
+    $Dbpassword = $accounts[0]["pass"];
+    $id = $accounts[0]["id"];
+    echo $id;
+  }
 
   if (!empty($accounts) && $Dbname === $name && $Dbpassword === $password) {
     echo "Logged in";
-    $_SESSION["id"] = $id;
+    $_SESSION["login_id"] = $id;
     $_SESSION["name"] = $Dbname;
     header("location: ../home\home.php");
   } else {

@@ -1,10 +1,12 @@
 .mid-side {
   display: grid;
-  grid: 10% auto / auto;
+  /* grid: 10% max-content max-content / auto; */
   width: 100%;
-  border: 2.5px solid rgba(255, 255, 255, 0.264);
+  border-top: 2.5px solid rgba(255, 255, 255, 0.264);
+  border-inline: 2.5px solid rgba(255, 255, 255, 0.264);
+  gap: 25px;
 }
-.mid-side > * {
+.mid-side > *:not(.posts) {
   padding: 5px 10px;
 }
 
@@ -54,6 +56,7 @@ header {
   grid: 100% / repeat(2, max-content);
   justify-content: space-between;
   padding-right: 10px;
+  padding-bottom: 10px;
 }
 .tweet-icons {
   display: grid;
@@ -111,4 +114,140 @@ header {
   transition: background 500ms ease-in-out;
   background: linear-gradient(180deg, rgb(10, 122, 197), rgb(29, 155, 240));
   cursor: pointer;
+}
+.posts {
+  display: grid;
+  gap: 20px;
+}
+.post {
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.451);
+}
+.go {
+  display: grid;
+  grid: max-content/ auto;
+  gap: 10px;
+  align-items: start;
+  padding: 10px;
+  width: 100%;
+  background: none;
+  color: white;
+  border: none;
+}
+
+.writer-post {
+  display: grid;
+  grid: repeat(2, max-content) / auto;
+  gap: 10px;
+  padding-inline: 5px;
+}
+.text {
+  width: 100%;
+  font-size: 12px;
+  word-break: break-all;
+  text-align: start;
+  max-height: 546.281px;
+  margin-top: 15px;
+}
+.writer-post img {
+  width: 99%;
+  height: 100%;
+  border-radius: 10px;
+}
+.user-img {
+  display: flex;
+  align-items: center;
+  grid: max-content/repeat(2, max-content);
+  gap: 10px;
+}
+.post-writer {
+  opacity: 50%;
+  transition: all 250ms ease-in-out;
+}
+.post-writer:hover {
+  opacity: 100%;
+}
+.follow {
+  padding: 5px 8px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.451);
+  font-size: 12px;
+  transition: all 250ms ease-in-out;
+}
+.follow:hover {
+  border-color: blue;
+  background-color: rgba(255, 255, 255, 0.103);
+  cursor: pointer;
+}
+.followed {
+  padding: 5px;
+  border-radius: 30px;
+  border: 1px solid blue;
+  background-color: rgba(255, 255, 255, 0.103);
+  font-size: 12px;
+  transition: all 250ms ease-in-out;
+}
+.followed:hover {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.451);
+}
+.post-buttons {
+  display: grid;
+  grid: max-content/repeat(4, max-content);
+  gap: 14px;
+  align-items: center;
+  justify-content: space-around;
+  padding-bottom: 10px;
+}
+.like {
+  background: none;
+  outline: none;
+  width: max-content;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 25px;
+  padding: 5px;
+  background-color: rgb(89, 49, 49);
+  align-items: center;
+  gap: 5px;
+}
+.post-button {
+  background: none;
+  outline: none;
+  width: max-content;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 25px;
+  padding: 5px;
+  display: flex;
+  justify-items: center;
+}
+
+.post-button:hover {
+  background-color: rgb(29, 31, 31);
+}
+.post-button:has(span) {
+  gap: 5px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(2, max-content);
+}
+.post-button img {
+  width: 18px;
+}
+.a-post {
+  display: grid;
+  grid: repeat(2, max-content) / auto;
+  text-decoration: none;
+  color: white;
+  padding-right: 14px;
 }

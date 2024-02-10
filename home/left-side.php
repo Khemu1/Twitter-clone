@@ -8,15 +8,8 @@ if (isset($_POST["logout"])) {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../assets\css\home-left-side.css">
-  <title>Document</title>
-</head>
+<link rel="stylesheet" href="../assets\css\home-left-side.css">
 
 <body>
 
@@ -103,11 +96,9 @@ if (isset($_POST["logout"])) {
 
     <button class="tweet">tweet</button>
     <form method="POST">
-      <button class="tweet" name="logout">Logout</button>
+      <button class="tweet logout" name="logout">Logout</button>
     </form>
 
   </div>
 
 </body>
-
-</html>

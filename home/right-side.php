@@ -5,15 +5,9 @@ $users = Account::select(["name"]);
 require_once("/laragon/www/twitter/config/setup.php");
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../assets\css\home-right-side.css">
-  <title>Document</title>
-</head>
+<link rel="stylesheet" href="../assets\css\home-right-side.css">
+
 
 <body>
   <div class="right-side">
@@ -92,4 +86,3 @@ require_once("/laragon/www/twitter/config/setup.php");
 
 </body>
 
-</html>
