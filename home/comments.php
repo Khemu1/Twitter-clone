@@ -5,7 +5,6 @@ session_start();
 $post = Utils::selectPost($_GET["post_id"]);
 $post = $post[0];
 $comments = Utils::selectComments($_GET["post_id"]);
-echo count($comments);
 if (!isset($_GET["post_id"])) {
   header("location:home.php");
   exit;
@@ -15,17 +14,24 @@ if (isset($_POST["like"])) {
   Utils::like($_GET["post_id"], $_SESSION["poster_id"], $_SESSION["login_id"], );
 }
 
+
 if (isset($_POST["submit"])) {
   $file_name = $_FILES["tweet-img"]["name"];
   $temp_name = $_FILES["tweet-img"]["tmp_name"];
-  $folder = '../assets/images' . $file_name;
+  $folder = '../assets/images/' . $file_name;
   if (move_uploaded_file($temp_name, $folder)) {
     echo "commented";
     Utils::insertComment($_SESSION["login_id"], $_GET["post_id"], $_POST["tweet"], $file_name);
   }
 }
 
+if (isset($_POST["follow"])) {
+  Utils::follow($post["poster_id"], $_SESSION["login_id"]);
+}
+if (isset($_POST["follow-commenter"])) {
+  Utils::follow($_POST["commenter_id"], $_SESSION["login_id"]);
 
+}
 ?>
 
 <head>
@@ -50,22 +56,36 @@ if (isset($_POST["submit"])) {
             <div class="post-writer" name="post-writer">
               <?= $post["poster_name"] ?>
             </div>
+            <form method="POST">
+              <?php if ($_SESSION["login_id"] != $post["poster_id"]) { ?>
+                <button
+                  class="<?= Utils::is_follower($post["poster_id"], $_SESSION["login_id"]) ? "followed" : "follow" ?>"
+                  name="follow">
+                  <?= Utils::is_follower($post["poster_id"], $_SESSION["login_id"]) ? "Unfollow" : "Follow" ?>
+                </button>
+              <?php } ?>
+            </form>
           </div>
           <div class="writer-post">
             <span class="text" name="text">
               <?= $post["post_text"] ?>
             </span>
             <?php if (!empty(trim($post["post_img"]))) { ?>
-              <img src="../assets/images<?= $post["post_img"] ?>" alt="" name=post="img">
+              <img src="../assets/images/<?= $post["post_img"] ?>" alt="" name=post="img">
             <?php } ?>
           </div>
         </div>
         <div class="post-buttons">
           <button class="post-button send-comment">
             <img src="../assets\icons\chat-bubble.png" alt="">
-            <span>
-              <?= Utils::comments_num($_GET["post_id"]) > 0 ? Utils::comments_num($_GET["post_id"]) : "" ?>
-            </span>
+            <?php
+            if (Utils::comments_num($_GET["post_id"]) > 0) { ?>
+              <span>
+                <?= Utils::comments_num($_GET["post_id"]) ?>
+              </span>
+            <?php }
+            ?>
+
           </button>
 
           <button class="post-button">
@@ -137,6 +157,16 @@ if (isset($_POST["submit"])) {
                 <div class="post-writer" name="post-writer">
                   <?= $comment["commenter_name"] ?>
                 </div>
+                <form method="POST">
+                  <input type="hidden" name="commenter_id" value=<?= $comment["commenter_id"] ?>>
+                  <?php if ($_SESSION["login_id"] != $comment["commenter_id"]) { ?>
+                    <button
+                      class="<?= Utils::is_follower($comment["commenter_id"], $_SESSION["login_id"]) ? "followed" : "follow" ?>"
+                      name="follow-commenter">
+                      <?= Utils::is_follower($comment["commenter_id"], $_SESSION["login_id"]) ? "Unfollow" : "Follow" ?>
+                    </button>
+                  <?php } ?>
+                </form>
               </div>
               <div class="writer-post">
                 <span class="text" name="text">
@@ -146,7 +176,7 @@ if (isset($_POST["submit"])) {
                   <?= $comment["comment_text"] ?>
                 </span>
                 <?php if (!empty(trim($comment["comment_img"]))) { ?>
-                  <img src="../assets/images<?= $comment["comment_img"] ?>" alt="" name=post="img">
+                  <img src="../assets/images/<?= $comment["comment_img"] ?>" alt="" name=post="img">
                 <?php } ?>
               </div>
             </div>
@@ -213,6 +243,4 @@ if (isset($_POST["submit"])) {
       button.classList.toggle("like");
     });
   });
-
-
 </script>

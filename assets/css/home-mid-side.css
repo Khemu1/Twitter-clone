@@ -154,9 +154,9 @@ header {
   border-radius: 10px;
 }
 .user-img {
-  display: flex;
+  display: grid;
   align-items: center;
-  grid: max-content/repeat(2, max-content);
+  grid: max-content/repeat(3, max-content);
   gap: 10px;
 }
 .post-writer {
@@ -165,6 +165,7 @@ header {
 }
 .post-writer:hover {
   opacity: 100%;
+  cursor: pointer;
 }
 .follow {
   padding: 5px 8px;
@@ -185,6 +186,7 @@ header {
   background-color: rgba(255, 255, 255, 0.103);
   font-size: 12px;
   transition: all 250ms ease-in-out;
+  color: white;
 }
 .followed:hover {
   background-color: transparent;

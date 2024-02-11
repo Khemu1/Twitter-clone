@@ -5,16 +5,19 @@ require_once("../classes/Utils.php");
 session_start();
 $posts = Utils::selectAllPosts();
 if (isset($_POST["go"]) || isset($_POST["comment"])) {
-  header("location:../home\comments.php");
+  header("location:comments.php?post_id={$_POST["post_id"]}");
 }
 if (isset($_POST["like"])) {
   Utils::like($_POST["post_id"], $_POST["poster_id"], $_SESSION["login_id"]);
+}
+if (isset($_POST["follow"])) {
+  Utils::follow($_POST["poster_id"], $_SESSION["login_id"]);
 }
 
 if (isset($_POST["post-tweet"])) {
   $file_name = $_FILES['tweet-img']['name'];
   $temp_name = $_FILES['tweet-img']['tmp_name'];
-  $folder = '../assets/images' . $file_name;
+  $folder = 'C:/aragon/www/twitter/assets/images/' . $file_name;
   if (move_uploaded_file($temp_name, $folder)) {
     Utils::postTweet([
       "userId" => $_SESSION["login_id"],
@@ -102,7 +105,14 @@ if (isset($_POST["upload-img-button"])) {
                   <div class="post-writer" name="post-writer">
                     <?= $post["name"] ?>
                   </div>
-                  <div class="follow">follow</div>
+                  <?php if ($_SESSION["login_id"] != $post["poster_id"]) { ?>
+                    <button
+                      class="<?= Utils::is_follower($post["poster_id"], $_SESSION["login_id"]) ? "followed" : "follow" ?>"
+                      name="follow">
+                      <?= Utils::is_follower($post["poster_id"], $_SESSION["login_id"]) ? "Unfollow" : "Follow" ?>
+                    </button>
+                  <?php } ?>
+
                 </div>
                 <div class="writer-post">
                   <a class="a-post" href="comments.php?post_id=<?= $post["post_id"] ?>">
@@ -110,19 +120,24 @@ if (isset($_POST["upload-img-button"])) {
                       <?= $post["text"] ?>
                     </span>
                     <?php if (!empty(trim($post["img"]))) { ?>
-                      <img src="../assets/images<?= $post["img"] ?>" alt="" name=post="img">
+                      <img src="../assets/images/<?= $post["img"] ?>" alt="" name=post="img">
                     <?php } ?>
                   </a>
                 </div>
               </div>
               <div class="post-buttons">
+
                 <button class="post-button" name="comment">
                   <img src="../assets\icons\chat-bubble.png" alt="">
-                  <span>
-                    <?= Utils::comments_num($post["post_id"]) > 0 ? Utils::comments_num($post["post_id"]) : "" ?>
-
-                  </span>
+                  <?php
+                  if (Utils::comments_num($post["post_id"])) { ?>
+                    <span>
+                      <?= Utils::comments_num($post["post_id"]) ?>
+                    </span>
+                  <?php }
+                  ?>
                 </button>
+
                 <button class="post-button">
                   <img src="../assets\icons\repost.png" alt="">
                 </button>

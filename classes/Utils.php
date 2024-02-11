@@ -2,6 +2,8 @@
 include_once("Post.php");
 include_once("Like.php");
 include_once("Comment.php");
+include_once("Followable.php");
+
 
 class Utils
 {
@@ -87,5 +89,14 @@ class Utils
   {
     $comments = Comment::selectNumOfCommentsFor(["post_id" => $post_id]);
     return $comments;
+  }
+
+  public static function follow($followable_id, $poster_id)
+  {
+    Followable::insertOrDelete(["followable_id" => $followable_id, "follower_id" => $poster_id]);
+  }
+  public static function is_follower($followable_id, $follower_id)
+  {
+    return count(Followable::select(["followable_id" => $followable_id, "follower_id" => $follower_id])) > 0;
   }
 }
