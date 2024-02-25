@@ -1,3 +1,8 @@
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
 .mid-side {
   display: grid;
   /* grid: 10% max-content max-content / auto; */
@@ -142,11 +147,15 @@ header {
 }
 .text {
   width: 100%;
-  font-size: 12px;
+  font-size: 15px;
   word-break: break-all;
   text-align: start;
   max-height: 546.281px;
   margin-top: 15px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-family: monospace;
 }
 .writer-post img {
   width: 99%;
@@ -156,9 +165,69 @@ header {
 .user-img {
   display: grid;
   align-items: center;
+  grid: max-content/repeat(2, max-content);
+  justify-content: space-between;
+}
+.user-img .left {
+  display: grid;
+  align-items: center;
   grid: max-content/repeat(3, max-content);
   gap: 10px;
 }
+.user-img .drop-down {
+  position: relative;
+  background-image: url("../icons/down-arrow.png");
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  gap: 5px;
+  margin: 0;
+  margin-right: 20px;
+}
+.user-img .drop-down ul {
+  display: none;
+  grid-template-columns: max-content;
+  grid-template-rows: repeat(2, max-content);
+  justify-content: center;
+  justify-items: center;
+  position: absolute;
+  background-color: rgba(131, 127, 127, 0.451);
+  width: 117px;
+  left: -47px;
+  border-radius: 10px;
+  top: 22px;
+  cursor: pointer;
+}
+.user-img .drop-down ul :first-child {
+  border-radius: 10px 10px 0px 0px;
+}
+.user-img .drop-down ul :last-child {
+  border-radius: 0px 0px 10px 10px;
+}
+.user-img .drop-down ul li {
+  display: inline-block;
+  width: 100%;
+  padding: 12px 14px;
+  transition: background-color 250ms ease-in-out;
+}
+
+.user-img .drop-down ul li button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  font-family: monospace;
+  font-size: 16px;
+  font-weight: 700;
+}
+.user-img .drop-down ul li:hover {
+  background-color: rgb(60, 171, 91);
+}
+.user-img .drop-down:hover ul {
+  display: grid;
+}
+
 .post-writer {
   opacity: 50%;
   transition: all 250ms ease-in-out;

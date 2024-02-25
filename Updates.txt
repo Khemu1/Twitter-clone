@@ -10,4 +10,9 @@ added a follow button as requested but still not fully functional
 fixed the problem with images their saving location wasn't correct
 the follow button is now fully functional
 
-next step is the delete and edit buttons 
+next step is the delete and edit buttons
+
+2/16/2024
+
+delete button has beeen added and working
+edit button has been added and not working yet

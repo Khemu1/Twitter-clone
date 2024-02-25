@@ -54,11 +54,6 @@ require_once("/laragon/www/twitter/config/setup.php");
       }
     });
 
-
-
-
-
-
     function addUser(user) {
       let child = `
         <div class="account">
@@ -85,4 +80,3 @@ require_once("/laragon/www/twitter/config/setup.php");
   </script>
 
 </body>
-

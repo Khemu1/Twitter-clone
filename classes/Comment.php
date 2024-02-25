@@ -61,4 +61,12 @@ class Comment
 
   }
 
+  public static function deleteCommentWith($postId){
+    $stmt = DB::$pdo->prepare("
+    DELETE  FROM comments
+    WHERE post_id=$postId
+    ");
+    $stmt->execute();
+  }
+
 }

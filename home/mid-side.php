@@ -4,9 +4,7 @@ require_once("../classes/Utils.php");
 
 session_start();
 $posts = Utils::selectAllPosts();
-if (isset($_POST["go"]) || isset($_POST["comment"])) {
-  header("location:comments.php?post_id={$_POST["post_id"]}");
-}
+
 if (isset($_POST["like"])) {
   Utils::like($_POST["post_id"], $_POST["poster_id"], $_SESSION["login_id"]);
 }
@@ -28,6 +26,15 @@ if (isset($_POST["post-tweet"])) {
 }
 if (isset($_POST["upload-img-button"])) {
   echo "upload-button clicked";
+}
+if (isset($_POST["delete"])) {
+  Utils::deletePost($_POST["delete"]);
+}
+if (isset($_POST["go"]) || isset($_POST["comment"])) {
+  header("location:comments.php?post_id={$_POST["post_id"]}&&poster_id={$_POST["poster_id"]}");
+}
+if (isset($_POST["edit"])) {
+  header("location:editPage.php?post_id={$_POST["post_id"]}");
 }
 
 ?>
@@ -101,22 +108,38 @@ if (isset($_POST["upload-img-button"])) {
               <input type="hidden" name="post_img" value=<?= $post["img"] ?>>
               <div name="go" class="go">
                 <div class="user-img">
-                  <img src="../assets\icons\user.png" alt="">
-                  <div class="post-writer" name="post-writer">
-                    <?= $post["name"] ?>
+                  <div class="left">
+                    <img src="../assets\icons\user.png" alt="">
+                    <div class="post-writer" name="post-writer">
+                      <?= $post["name"] ?>
+                    </div>
+                    <?php if ($_SESSION["login_id"] != $post["poster_id"]) { ?>
+                      <button
+                        class="<?= Utils::is_follower($post["poster_id"], $_SESSION["login_id"]) ? "followed" : "follow" ?>"
+                        name="follow">
+                        <?= Utils::is_follower($post["poster_id"], $_SESSION["login_id"]) ? "Unfollow" : "Follow" ?>
+                      </button>
+                    <?php } ?>
                   </div>
-                  <?php if ($_SESSION["login_id"] != $post["poster_id"]) { ?>
-                    <button
-                      class="<?= Utils::is_follower($post["poster_id"], $_SESSION["login_id"]) ? "followed" : "follow" ?>"
-                      name="follow">
-                      <?= Utils::is_follower($post["poster_id"], $_SESSION["login_id"]) ? "Unfollow" : "Follow" ?>
-                    </button>
+                  <?php if ($_SESSION["login_id"] === $post["poster_id"]) { ?>
+                    <form method="POST">
+                      <ul class="drop-down">
+                        <!-- <img src="../assets/icons/down-arrow.png"> -->
+                        <ul>
+                          <li><button name="edit">Edit</button></li>
+                          <li><button name="delete">Delete</button></li>
+                        </ul>
+                      </ul>
+                    </form>
                   <?php } ?>
+
+
 
                 </div>
                 <div class="writer-post">
-                  <a class="a-post" href="comments.php?post_id=<?= $post["post_id"] ?>">
-                    <span class="text" name="text">
+                  <a class="a-post"
+                    href="comments.php?post_id=<?= $post["post_id"] ?>&&poster_id=<?= $post["poster_id"] ?>">
+                    <span class="text" name="text" value="<?= $post["text"] ?>">
                       <?= $post["text"] ?>
                     </span>
                     <?php if (!empty(trim($post["img"]))) { ?>

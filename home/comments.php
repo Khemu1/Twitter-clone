@@ -5,13 +5,13 @@ session_start();
 $post = Utils::selectPost($_GET["post_id"]);
 $post = $post[0];
 $comments = Utils::selectComments($_GET["post_id"]);
-if (!isset($_GET["post_id"])) {
+if (!isset($_GET["post_id"]) || !isset($_GET["poster_id"])) {
   header("location:home.php");
   exit;
 }
 
 if (isset($_POST["like"])) {
-  Utils::like($_GET["post_id"], $_SESSION["poster_id"], $_SESSION["login_id"], );
+  Utils::like($_GET["post_id"], $_GET["poster_id"], $_SESSION["login_id"], );
 }
 
 
@@ -40,7 +40,9 @@ if (isset($_POST["follow-commenter"])) {
   <link rel="stylesheet" href="../assets\css\home-left-side.css">
   <link rel="stylesheet" href="../assets\css\home-right-side.css">
   <link rel="stylesheet" href="../assets\css\comment-page.css">
-  <title>comment</title>
+  <title>
+    <?= $_SESSION["name"] ?>'s post
+  </title>
 </head>
 
 <body>

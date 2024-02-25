@@ -35,7 +35,7 @@ class Utils
 
   public static function selectAllPosts(): array
   {
-    return Post::selectAllPosts(
+    return Post::selectAllPost(
 
     );
   }
@@ -45,6 +45,7 @@ class Utils
       $post_id
     );
   }
+
   public static function selectComments($post_id): array
   {
     return Comment::selectWithUser(
@@ -98,5 +99,10 @@ class Utils
   public static function is_follower($followable_id, $follower_id)
   {
     return count(Followable::select(["followable_id" => $followable_id, "follower_id" => $follower_id])) > 0;
+  }
+  public static function deletePost($postId)  {
+    Like::deleteLikestWith($postId);
+    Comment::deleteCommentWith($postId);
+    Post::deleteposttWith($postId);
   }
 }

@@ -74,5 +74,13 @@ class Like
     return $likers;
 
   }
+  public static function deleteLikestWith($postId)
+  {
+    $stmt = DB::$pdo->prepare("
+    DELETE FROM likes
+    WHERE post_id=$postId
+    ");
+    $stmt->execute();
+  }
 
 }

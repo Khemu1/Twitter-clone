@@ -17,7 +17,7 @@ class Post
     DB::select(self::$table, $columns ?? self::$columns, $condition ?? []);
   }
 
-  public static function selectAllPosts(): array
+  public static function selectAllPost(): array
   {
     // $keys = array_keys($columns);
     // $placeHolder = array_map(fn(string $key) => "$key=:$key", $keys);
@@ -49,5 +49,12 @@ class Post
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_DEFAULT);
   }
-
+  public static function deleteposttWith($postId)
+  {
+    $stmt = DB::$pdo->prepare("
+    DELETE FROM posts
+    WHERE id=$postId
+    ");
+    $stmt->execute();
+  }
 }
