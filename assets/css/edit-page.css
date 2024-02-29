@@ -31,14 +31,31 @@ body {
   color: white;
   border: none;
 }
-
 .writer-post {
   display: grid;
   grid: repeat(2, max-content) / auto;
   gap: 10px;
   padding-inline: 5px;
+  position: relative;
 }
-
+.delete-img {
+  all: unset;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  border-radius: 50%;
+  position: absolute;
+  top: 67px;
+  right: 18px;
+  background-color: rgba(255, 255, 255, 0.411);
+  color: black;
+  padding: 5px;
+  cursor: pointer;
+  transition: background-color 250ms ease-in-out;
+}
+.delete-img:hover {
+  background-color: rgb(255, 255, 255);
+}
 .text {
   padding-right: 10px;
 }
@@ -88,10 +105,17 @@ body {
 
 .tweet-buttons {
   display: grid;
-  grid: 100% / repeat(2, max-content);
+  grid: auto / repeat(5, max-content);
   justify-content: space-between;
   padding-right: 10px;
   padding-bottom: 10px;
+  gap: 5px;
+  align-items: center;
+}
+.tweet-icons {
+  display: grid;
+  grid: auto/repeat(4, auto);
+  gap: 5px;
 }
 .upload {
   background: transparent;

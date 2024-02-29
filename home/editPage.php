@@ -71,17 +71,42 @@ if (isset($_POST["submit"])) {
             <div class="writer-post">
               <textarea class="text" name="text"><?= trim($post["post_text"]) ?></textarea>
               <?php if (!empty(trim($post["post_img"]))) { ?>
+                <button class="delete-img">X</button>
                 <img class="post-img" src="../assets/images/<?= $post["post_img"] ?>" alt="" name=post="img">
               </div>
             <?php } ?>
           </div>
           <div class="edit-buttons">
             <?php if (!empty(trim($post["post_img"]))) { ?>
-              <button class="tweet-button delete-button" value="1" name="delete-img">Delete All</button>
+              <button class="tweet-button delete-button">Reset</button>
 
             <?php } ?>
             <form method="POST">
-              <button class="tweet-button" name="edit">Edit</button>
+              <div class="tweet-buttons">
+
+                <div class="tweet-icons">
+                  <div class="tweet-icon">
+                    <button class="upload" name="upload-img-button">
+                      <img src="../assets/icons/gallery.png" alt="">
+                      <input type="file" name="tweet-img" class="upload-img">
+                    </button>
+                  </div>
+
+                  <div class="tweet-icon">
+                    <img src="../assets\icons\gif.png" alt="">
+                  </div>
+
+                  <div class="tweet-icon">
+                    <img src="../assets\icons\bar-chart.png" alt="">
+                  </div>
+
+                  <div class="tweet-icon">
+                    <img src="../assets\icons\happiness.png" alt="">
+                  </div>
+
+                </div>
+                <button class="tweet-button" name="edit">Edit</button>
+              </div>
             </form>
           </div>
 
@@ -91,39 +116,9 @@ if (isset($_POST["submit"])) {
     <?php include("../home/right-side.php") ?>
   </div>
 </body>
-
 <script>
   let post = <?= json_encode($post, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE) ?>;
   let postText = post.post_text;
   let postImg = post.post_img;
-  let restButton = document.querySelector(".delete-button")
-
-  let deleteImg = document.querySelector(".delete-button");
-  deleteImg.addEventListener("click", () => {
-    let value = deleteImg.value;
-    deleteImg.value = value === "true" ? "false" : "true";
-    toggleImg();
-    if (deleteImg.value === "true") {
-      deleteImg.textContent = "Reset"
-    }
-    else {
-      deleteImg.textContent = "Delete all"
-    }
-  });
-
-  document.querySelector(".text").addEventListener("input", () => {
-    let text = document.querySelector(".text").value;
-    if (!(text === postText)) {
-      restButton.textContent = "Reset";
-    }
-    else {
-      restButton.textContent = "Delete All";
-    }
-  })
-
-  function toggleImg() {
-    let img = document.querySelector(".post-img")
-    img.classList.toggle("hidden");
-  }
-
 </script>
+<script src="../assets\JS\editPage.js"></script>
